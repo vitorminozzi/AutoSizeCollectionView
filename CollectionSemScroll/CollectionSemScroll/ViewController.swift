@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-
+        
         tiposDePagamento = ["Cartão de Crédito", "Boleto", "Débito", "Dinheiro", "Pix", "Tranferencia", "Escambo", "Fatura", "Consignado"]
         
         collection.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
@@ -42,37 +42,37 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         customAdapter.setupCell(text: tiposDePagamento[indexPath.row], imageString: "house")
         return customAdapter
-        }
-
     }
+    
+}
 
 extension ViewController {
     func setupLayout() {
-    
-        let layout = FlowLayout(minimumInteritemSpacing: 15, minimumLineSpacing: 15, sectionInset: .zero)
-    
+        
+        let layout = FlowLayout(minimumInteritemSpacing: 20, minimumLineSpacing: 20, sectionInset: .zero)
+        
         collection = AutoHeightCollectionView(frame: .zero, collectionViewLayout: layout)
         view.addSubview(collection)
         collection.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         NSLayoutConstraint.activate([
-                                        collection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                        collection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-                                        collection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            collection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            collection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
-                                      
-   
+        
+        
         textLabel = UILabel()
         view.addSubview(textLabel)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.text = "Defina a forma de pagamento e aceite o prestador."
         textLabel.numberOfLines = 0
         NSLayoutConstraint.activate([
-                                        textLabel.topAnchor.constraint(equalTo: collection.bottomAnchor, constant: 20),
-                                        textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                        textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            textLabel.topAnchor.constraint(equalTo: collection.bottomAnchor, constant: 20),
+            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-       
+        
     }
 }
 
